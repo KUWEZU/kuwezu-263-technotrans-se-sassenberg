@@ -1,203 +1,157 @@
 /**
- * client.ts — Zentrale Konfiguration für das Kundenprojekt.
+ * client.ts — Automatisch generiert von KUWEZU
+ * Erstellt: 2026-08-01T19:22:23.006Z
+ * Kundennummer: 263
  *
  * Alle Texte, Bilder und Einstellungen werden hier gepflegt.
- *
- * Bilder-Strategie:
- *   - Echte Bilder kommen direkt von R2 (https://r2.kuwezu.de/bibliothek/...)
- *   - SVG-Platzhalter (lokales /images/...) für Kategorien ohne Foto in R2
- *   - Sobald ein neues Bild hochgeladen ist: URL hier eintragen und fertig.
  */
-
-const R2 = "https://r2.kuwezu.de";
 
 export const client = {
   // ── Allgemein ──────────────────────────────────────────────────────────────
-  name: "KUWEZU",
-  branche: "Kfz-Werkstatt" as string,
-  // #8 — optionaler Freitext-Unternehmenszweck; ersetzt kundenseitig die Branche
-  // in Hero-Badge/Footer/Aktuelles. null = Fallback auf branche.
-  unternehmenszweck: null as string | null,
-  ort: "Warendorf" as string,
-  slogan: "Professionelle Kfz-Werkstatt die Sie verdienen",
-  adresse: "Bernhardstraße 4c, 48231 Warendorf",
-  // Google-Maps-Link für die Footer-Adresse. Wird beim Generieren zentral gesetzt
-  // (kunde.maps_url oder Google-Maps-Suche aus der Adresse); null = kein Link.
-  maps_url: "https://www.google.com/maps/search/?api=1&query=Bernhardstra%C3%9Fe%204c%2C%2048231%20Warendorf" as string | null,
-  telefon: "0176 21575303",
-  // Platzhalter — wird beim Generieren durch die echten Werkstattdaten ersetzt.
-  // NIE die Plattform-Adresse (info@kuwezu.de) als Default: sie darf auf keiner
-  // Kundenseite (v.a. im Impressum) auftauchen.
-  email: "info@musterwerkstatt.de",
-  website: "https://www.kuwezu.de",
-  logo: null,
+  name: "technotrans SE",
+  branche: "",
+  unternehmenszweck: null,
+  ort: "Sassenberg",
+  slogan: "technotrans SE",
+  adresse: "Robert-Linnemann-Straße 17, 48336 Sassenberg",
+  maps_url: "https://www.google.com/maps/place/?q=place_id:ChIJ56oPvT2OuUcRk_1Z13iUgck",
+  // Geokoordinaten → cookie-freie OSM-Karte im Kontakt; null = Adress-Box.
+  // Aus kunden.lat/lng (persistiert) → überlebt jeden Redeploy (kein stiller Verlust).
+  geo: { lat: 51.9782795, lon: 8.0536932 } as { lat: number; lon: number } | null,
+  telefon: "02583 3011000",
+  email: "",
+  website: "",
+  logo: "https://r2.kuwezu.de/cdn-cgi/image/width=320,fit=contain,quality=78,format=auto/konzepte/autofit/autofit_logo.webp",
   standort_bild: null,
-  // Foto-Attribution (Unsplash/Pexels) → Footer-Hinweis. Vom Generator befüllt.
-  bildAttributionen: {},
-
-  // ── Öffnungszeiten & Services ──────────────────────────────────────────────
-  tuev_termine: true as boolean,
-  // Wiederkehrende TÜV-/HU-Termine — leer/null: kein Infoblock im Kontaktbereich
-  tuev_slots: [
-    { day: "di", from: "08:00", to: "16:00" },
-    { day: "do", from: "08:00", to: "12:00" },
-  ] as { day: string; from: string; to: string }[] | null,
-  tuev_hinweis: "Nur nach Terminvereinbarung." as string | null,
-  oeffnungszeiten: {
-    mo_fr: "08:00 – 18:00" as string,
-    sa:    "09:00 – 13:00" as string,
-    so:    "" as string,
+  // Foto-Attribution (Unsplash/Pexels) → Footer-Hinweis „Fotos: …". Leer = kein Hinweis.
+  bildAttributionen: {"hero":{"autor":"Sebastian Herrmann","autorUrl":"https://unsplash.com/@officestock","quelle":"unsplash"},"ueberUns":{"autor":"Vitaly Gariev","autorUrl":"https://unsplash.com/@silverkblack","quelle":"unsplash"},"karriere":{"autor":"Austin Distel","autorUrl":"https://unsplash.com/@austindistel","quelle":"unsplash"}} as {
+    hero?: { autor: string; autorUrl: string; quelle: string };
+    ueberUns?: { autor: string; autorUrl: string; quelle: string };
+    standort?: { autor: string; autorUrl: string; quelle: string };
+    karriere?: { autor: string; autorUrl: string; quelle: string };
+    leistungen?: Record<string, { autor: string; autorUrl: string; quelle: string }>;
   },
 
+  // ── Branding ───────────────────────────────────────────────────────────────
+  farben: {
+    primary: "#e30613",
+    secondary: "#000000",
+    accent: "#b1b2b3",
+  },
   // ── Hero ───────────────────────────────────────────────────────────────────
   hero: {
-    bild: "/images/hero.svg",
-    overlayOpacity: 0.55,
-    ueberschrift: "Professionelle Kfz-Reparatur",
-    ueberschriftHighlight: "die Sie verdienen",
-    ueberschriftLines: ["Professionelle Kfz-Reparatur", "die Sie verdienen"],
-    untertext:
-      "Von der Inspektion bis zur Unfallreparatur — wir kümmern uns um Ihr Fahrzeug mit modernster Technik und über 20 Jahren Erfahrung.",
+    bild: "https://r2.kuwezu.de/cdn-cgi/image/width=1600,fit=cover,quality=78,format=auto/kunden/263/stock-xhtkb8.jpg",
+    bildSrcset: "https://r2.kuwezu.de/cdn-cgi/image/width=768,fit=cover,quality=78,format=auto/kunden/263/stock-xhtkb8.jpg 768w, https://r2.kuwezu.de/cdn-cgi/image/width=1280,fit=cover,quality=78,format=auto/kunden/263/stock-xhtkb8.jpg 1280w, https://r2.kuwezu.de/cdn-cgi/image/width=1920,fit=cover,quality=78,format=auto/kunden/263/stock-xhtkb8.jpg 1920w",
+    bildSizes: "100vw",
+    overlayOpacity: 0.55, /* fix — nie schwächer, nie überschreibbar */
+    ueberschrift: "Ihre Werkstatt in Sassenberg – technotrans SE",
+    ueberschriftHighlight: "technotrans SE",
+    ueberschriftLines: ["Ihre Werkstatt in Sassenberg –", "technotrans SE"],
+    untertext: "Präzisionstechnik aus Sassenberg – zuverlässige Werkstattlösungen von technotrans SE für Ihre Anlagen.",
     ctaPrimary: { text: "Termin vereinbaren", href: "#kontakt" },
     ctaSecondary: { text: "Leistungen ansehen", href: "#leistungen" },
   },
 
   // ── Über uns ───────────────────────────────────────────────────────────────
   ueberUns: {
-    bild: "/images/ueber-uns.svg",
-    ueberschrift: "Ihre Werkstatt — Ihr Vertrauen",
-    text1:
-      "Seit über 20 Jahren sind wir Ihr zuverlässiger Partner rund ums Fahrzeug. Unser Team aus ausgebildeten Kfz-Meistern und Fachkräften arbeitet täglich daran, Ihnen den besten Service zu bieten.",
-    text2:
-      "Wir setzen auf modernste Diagnosetechnik, hochwertige Markenteile und transparente Kostenvoranschläge — damit Sie immer wissen, was Sie erwartet.",
-    tags: ["Meisterbetrieb", "Alle Marken", "Kostenloser Kostenvoranschlag", "Hol- & Bringservice"],
+    bild: "https://r2.kuwezu.de/cdn-cgi/image/width=1280,fit=cover,quality=78,format=auto/kunden/263/stock-19vayte.jpg",
+    bildSrcset: "https://r2.kuwezu.de/cdn-cgi/image/width=640,fit=cover,quality=78,format=auto/kunden/263/stock-19vayte.jpg 640w, https://r2.kuwezu.de/cdn-cgi/image/width=1024,fit=cover,quality=78,format=auto/kunden/263/stock-19vayte.jpg 1024w, https://r2.kuwezu.de/cdn-cgi/image/width=1536,fit=cover,quality=78,format=auto/kunden/263/stock-19vayte.jpg 1536w",
+    bildSizes: "(max-width: 1024px) 100vw, 50vw",
+    ueberschrift: "technotrans SE — Ihr Partner in Sassenberg",
+    text1: "Als führender Systemanbieter für Thermomanagement und Flüssigkeitstechnologien betreut technotrans SE mit Hauptsitz in Sassenberg im Münsterland Kunden aus Branchen wie Kunststoffverarbeitung, Laser, Print und Healthcare & Analytics mit maßgeschneiderten Kühl- und Temperiersystemen. In unserer Werkstatt vor Ort kümmern sich erfahrene Techniker um Installation, Wartung und Reparatur Ihrer Anlagen – zuverlässig, präzise und mit kurzen Wegen dank 24/7-Ersatzteilbereitstellung. Als Teil eines weltweit agierenden Konzerns verbinden wir internationale Innovationskraft mit persönlichem Service direkt aus dem Münsterland. Sprechen Sie uns an – wir sorgen dafür, dass Ihre Systeme rund um die Uhr zuverlässig laufen.",
+    text2: "",
+    tags: ["Qualität", "Zuverlässigkeit", "Faire Preise", "Erfahrung"],
     stats: [
-      { value: "20+",    label: "Jahre Erfahrung"      },
-      { value: "5.000+", label: "Zufriedene Kunden"    },
-      { value: "12",     label: "Fachkräfte"            },
-      { value: "15.000+",label: "Reparaturen/Jahr"     },
+      { value: "32332", label: "Zufriedene Kunden" },
+      { value: "23", label: "Fachkräfte" },
+      { value: "3232", label: "Aufträge/Jahr" },
     ],
   },
 
   // ── Leistungen ─────────────────────────────────────────────────────────────
   leistungen: [
     {
-      slug: "lackierung",
-      title: "Lackierung",
-      bild: `${R2}/bibliothek/Lackierung/1777808096660-leistung_lackierung.png`,
-      description:
-        "Professionelle Fahrzeuglackierungen in Originallack-Qualität — vom Spot-Repair bis zur Komplett-Lackierung.",
-      highlights: ["Originallack-Farbanpassung", "Klarlack-Versiegelung", "Spot-Repair möglich"],
+      slug: "achsvermessung",
+      title: "Achsvermessung",
+      bild: "https://r2.kuwezu.de/cdn-cgi/image/width=800,fit=cover,quality=78,format=auto/bibliothek/Achsvermessung/1777878369186-leistung_achsvermessung.webp",
+      bildSrcset: "https://r2.kuwezu.de/cdn-cgi/image/width=400,fit=cover,quality=78,format=auto/bibliothek/Achsvermessung/1777878369186-leistung_achsvermessung.webp 400w, https://r2.kuwezu.de/cdn-cgi/image/width=800,fit=cover,quality=78,format=auto/bibliothek/Achsvermessung/1777878369186-leistung_achsvermessung.webp 800w",
+      description: "Professionelle Achsvermessung — schnell, zuverlässig und zu fairen Preisen.",
+      highlights: ["Qualität", "Zuverlässigkeit", "Faire Preise"],
     },
     {
-      slug: "karosserie",
-      title: "Karosserie",
-      bild: `${R2}/bibliothek/Karosserie/1777808101772-leistung_karosserie.jpeg`,
-      description:
-        "Richtraumarbeiten, Blechreparaturen und Karosseriearbeiten nach Unfall oder Hagelschaden.",
-      highlights: ["Richtrahmen-Technologie", "Schweißarbeiten", "Kotflügel & Türen"],
-    },
-    {
-      slug: "reifenwechsel",
-      title: "Reifenwechsel",
-      bild: `${R2}/bibliothek/Reifenwechsel/1777808539901-auto_reifen_wechsel_15_11zon.webp`,
-      description:
-        "Sommer-, Winter- und Ganzjahresreifen — inklusive Einlagerung und RDKS-Programmierung.",
-      highlights: ["Alle Reifengrößen", "RDKS-Service", "Reifeneinlagerung"],
+      slug: "bremsen",
+      title: "Bremsen",
+      bild: "https://r2.kuwezu.de/cdn-cgi/image/width=800,fit=cover,quality=78,format=auto/bibliothek/Bremsen/1777878346158-bremsen_service.webp",
+      bildSrcset: "https://r2.kuwezu.de/cdn-cgi/image/width=400,fit=cover,quality=78,format=auto/bibliothek/Bremsen/1777878346158-bremsen_service.webp 400w, https://r2.kuwezu.de/cdn-cgi/image/width=800,fit=cover,quality=78,format=auto/bibliothek/Bremsen/1777878346158-bremsen_service.webp 800w",
+      description: "Professionelle Bremsen — schnell, zuverlässig und zu fairen Preisen.",
+      highlights: ["Qualität", "Zuverlässigkeit", "Faire Preise"],
     },
     {
       slug: "inspektion",
       title: "Inspektion",
-      bild: `${R2}/bibliothek/Inspektion/1777808114491-leistung_inspektion.jpg`,
-      description:
-        "Herstellerkonforme Inspektionen für alle Fabrikate — ohne Garantieverlust.",
-      highlights: ["Alle Marken", "Originalteile", "Digitales Serviceheft"],
+      bild: "https://r2.kuwezu.de/cdn-cgi/image/width=800,fit=cover,quality=78,format=auto/bibliothek/Inspektion/1777829697827-leistung_inspektion.webp",
+      bildSrcset: "https://r2.kuwezu.de/cdn-cgi/image/width=400,fit=cover,quality=78,format=auto/bibliothek/Inspektion/1777829697827-leistung_inspektion.webp 400w, https://r2.kuwezu.de/cdn-cgi/image/width=800,fit=cover,quality=78,format=auto/bibliothek/Inspektion/1777829697827-leistung_inspektion.webp 800w",
+      description: "Professionelle Inspektion — schnell, zuverlässig und zu fairen Preisen.",
+      highlights: ["Qualität", "Zuverlässigkeit", "Faire Preise"],
     },
     {
       slug: "hu-au",
-      title: "HU / AU",
-      bild: `${R2}/bibliothek/HU/AU/1777808071378-leistung_tu_v.png`,
-      description:
-        "Hauptuntersuchung und Abgasuntersuchung direkt bei uns — schnell und ohne lange Wartezeit.",
-      highlights: ["TÜV & DEKRA Partner", "Mängelbeseitigung", "Express-Termin"],
+      title: "HU/AU",
+      bild: "https://r2.kuwezu.de/cdn-cgi/image/width=800,fit=cover,quality=78,format=auto/bibliothek/HU/AU/1777878273976-leistung_tu_v.webp",
+      bildSrcset: "https://r2.kuwezu.de/cdn-cgi/image/width=400,fit=cover,quality=78,format=auto/bibliothek/HU/AU/1777878273976-leistung_tu_v.webp 400w, https://r2.kuwezu.de/cdn-cgi/image/width=800,fit=cover,quality=78,format=auto/bibliothek/HU/AU/1777878273976-leistung_tu_v.webp 800w",
+      description: "Professionelle HU/AU — schnell, zuverlässig und zu fairen Preisen.",
+      highlights: ["Qualität", "Zuverlässigkeit", "Faire Preise"],
+    },
+    {
+      slug: "ersatzwagen",
+      title: "Ersatzwagen",
+      bild: "https://r2.kuwezu.de/cdn-cgi/image/width=800,fit=cover,quality=78,format=auto/bibliothek/Ersatzwagen/1777882571137-ersatzwagen_auto.webp",
+      bildSrcset: "https://r2.kuwezu.de/cdn-cgi/image/width=400,fit=cover,quality=78,format=auto/bibliothek/Ersatzwagen/1777882571137-ersatzwagen_auto.webp 400w, https://r2.kuwezu.de/cdn-cgi/image/width=800,fit=cover,quality=78,format=auto/bibliothek/Ersatzwagen/1777882571137-ersatzwagen_auto.webp 800w",
+      description: "Professionelle Ersatzwagen — schnell, zuverlässig und zu fairen Preisen.",
+      highlights: ["Qualität", "Zuverlässigkeit", "Faire Preise"],
     },
     {
       slug: "autoglas",
       title: "Autoglas",
-      bild: `${R2}/bibliothek/Autoglas/1777808080567-autoglas_reparatur.png`,
-      description:
-        "Steinschlagreparatur, Windschutzscheibenwechsel und Kalibrierung von Fahrerassistenzsystemen.",
-      highlights: ["Steinschlagreparatur", "ADAS-Kalibrierung", "Versicherungsabrechnung"],
-    },
-    {
-      slug: "smart-repair",
-      title: "Smart Repair",
-      bild: "/images/leistungen/smart-repair.svg",
-      description:
-        "Kleine Dellen, Kratzer und Lackschäden wirtschaftlich und schnell reparieren.",
-      highlights: ["Delle ohne Lackierung", "Lackkratzer-Politur", "Felgenaufbereitung"],
-    },
-    {
-      slug: "klimaservice",
-      title: "Klimaservice",
-      bild: `${R2}/bibliothek/Klimaservice/1777808061957-leistung_klimaanlage.png`,
-      description:
-        "Klimaanlagen-Wartung, Desinfektion und Kältemittel-Befüllung nach aktuellen Standards.",
-      highlights: ["R134a & R1234yf", "Desinfektion", "Lecksuche"],
-    },
-    {
-      slug: "leasingrueckgabe",
-      title: "Leasingrückgabe",
-      bild: "/images/leistungen/leasingrueckgabe.svg",
-      description:
-        "Professionelle Aufbereitung und Reparatur vor der Fahrzeugrückgabe — stressfrei und transparent.",
-      highlights: ["Zustandsbericht", "Vollaufbereitung", "Rückgabe-Begleitung"],
-    },
-    {
-      slug: "hagelschaden",
-      title: "Hagelschaden",
-      bild: "/images/leistungen/hagelschaden.svg",
-      description:
-        "Schnelle und spurslose Hagelschadenreparatur durch PDR-Technologie ohne Lackierung.",
-      highlights: ["PDR-Technik", "Versicherungsservice", "Leifahrzeug möglich"],
-    },
-    {
-      slug: "unfallreparatur",
-      title: "Unfallreparatur",
-      bild: `${R2}/bibliothek/Unfallreparatur/1777808421144-leistungen_unfallinstandsetzung.webp`,
-      description:
-        "Komplette Unfallabwicklung — von der Schadensbegutachtung bis zur Fahrzeugabholung.",
-      highlights: ["Direktabrechnung", "Mietwagen-Service", "Wertgutachten"],
-    },
-  ],
+      bild: "https://r2.kuwezu.de/cdn-cgi/image/width=800,fit=cover,quality=78,format=auto/bibliothek/Autoglas/1777829664081-autoglas_reparatur.webp",
+      bildSrcset: "https://r2.kuwezu.de/cdn-cgi/image/width=400,fit=cover,quality=78,format=auto/bibliothek/Autoglas/1777829664081-autoglas_reparatur.webp 400w, https://r2.kuwezu.de/cdn-cgi/image/width=800,fit=cover,quality=78,format=auto/bibliothek/Autoglas/1777829664081-autoglas_reparatur.webp 800w",
+      description: "Professionelle Autoglas — schnell, zuverlässig und zu fairen Preisen.",
+      highlights: ["Qualität", "Zuverlässigkeit", "Faire Preise"],
+    }
+  ] as { slug: string; title: string; bild: string; bildSrcset: string; description: string; highlights: string[] }[],
 
   // ── Karriere ───────────────────────────────────────────────────────────────
-  // enabled: false blendet die ganze Section (inkl. Nav-/Footer-Link) aus;
-  // jobs: [] blendet nur "Offene Stellen" aus; benefits: null = neutrale
-  // Default-Kacheln (überschreibbar mit [{title, text}]).
+  // Kundenpflegbar (Stammdaten) bzw. künftig autoservice.jobs-Feed — keine
+  // erfundenen Platzhalter-Stellen mehr. jobs: [] → Template blendet
+  // "Offene Stellen" aus; enabled: false → ganze Section entfällt.
   karriere: {
     enabled: true as boolean,
+    jobs: [
+
+    ] as { title: string; type: string; experience: string }[],
     benefits: null as { title: string; text: string }[] | null,
     // null = In-Page-Anker #kontakt; http(s)-URL öffnet im neuen Tab
     buttonUrl: null as string | null,
-    // Öffentliches autoservice.jobs-Profil (aus Slug) → „Offene Stellen ansehen"
+    // Öffentlicher autoservice.jobs-Profil-Link (aus Slug) → „Offene Stellen ansehen"
     autoserviceUrl: null as string | null,
-    // Optionales Karriere-/Team-Bild (Bild-Slot typ="karriere"); null = kein Bild.
-    bild: null as string | null,
-    jobs: [
-      { title: "Kfz-Mechatroniker / -in",              type: "Vollzeit",            experience: "Berufserfahrung erwünscht"  },
-      { title: "Kfz-Lackierer / -in",                  type: "Vollzeit",            experience: "Berufseinsteiger willkommen" },
-      { title: "Karosseriebauer / -in",                 type: "Vollzeit / Teilzeit", experience: "Berufserfahrung erwünscht"  },
-      { title: "Auszubildende / -r Kfz-Mechatronik",   type: "Ausbildung",          experience: "Schulabschluss erforderlich" },
-    ],
+    // Karriere-/Team-Bild (Bild-Slot typ="karriere"); null = kein Bild.
+    bild: "https://r2.kuwezu.de/cdn-cgi/image/width=1280,fit=cover,quality=78,format=auto/kunden/263/stock-1r2iszm.jpg" as string | null,
   },
 
-  // Geokoordinaten (optional) → cookie-freie OSM-Karte im Kontakt; null = Adress-Box.
-  geo: null as { lat: number; lon: number } | null,
+  // ── Öffnungszeiten & Services ──────────────────────────────────────────────
+  tuev_termine: true as boolean,
+  // Wiederkehrende TÜV-/HU-Termine — leer/null: kein Infoblock auf der Seite
+  tuev_slots: [{ day: "mo", from: "08:00", to: "16:00" }] as { day: string; from: string; to: string }[] | null,
+  tuev_hinweis: null as string | null,
+  oeffnungszeiten: {
+    mo_fr: "07:00 – 18:00" as string,
+    sa:    "" as string,
+    so:    "" as string,
+  },
 
   // ── Kontakt ────────────────────────────────────────────────────────────────
   kontakt: {
-    oeffnungszeiten: ["Mo–Fr: 08:00 – 18:00", "Sa: 09:00 – 13:00"],
+    oeffnungszeiten: ["Mo–Fr: 07:00 – 18:00"],
   },
 
   // ── Social Media ───────────────────────────────────────────────────────────
@@ -207,19 +161,13 @@ export const client = {
   },
 
   // ── WhatsApp ───────────────────────────────────────────────────────────────
-  whatsapp: "" as string,
+  whatsapp: "dasdsadsad" as string,
 
   // ── Features ───────────────────────────────────────────────────────────────
-  newsEnabled: true as boolean,
+  newsEnabled: false as boolean,
 
-  // ── Impressum / Rechtsangaben (Migration 095; leere Felder = weglassen) ──────
-  // Beispieldaten = KUWEZU Werbeagentur GbR (Betreiber des Templates).
-  impressum: {
-    inhaber: "Sven Sickmann & David Aundrup",
-    rechtsform: "Gesellschaft bürgerlichen Rechts (GbR)",
-    ust_id: "DE456178409",
-    verantwortlicher: "Sven Sickmann, Bernhardstraße 4c, 48231 Warendorf",
-  } as {
+  // ── Impressum / Rechtsangaben (Migration 095) ───────────────────────────────
+  impressum: {} as {
     inhaber?: string; rechtsform?: string; ust_id?: string; handelsregister?: string;
     registergericht?: string; aufsichtsbehoerde?: string; verantwortlicher?: string;
   },

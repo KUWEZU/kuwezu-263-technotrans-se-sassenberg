@@ -1,1 +1,39 @@
-{"averageRating":null,"totalCount":0,"source":"Google","fetchedAt":"","reviews":[]}
+{
+  "averageRating": 3.9,
+  "totalCount": 31,
+  "source": "Google",
+  "fetchedAt": "2026-08-01T19:21:20.317Z",
+  "reviews": [
+    {
+      "author": "Rudolf Ackermann",
+      "rating": 5,
+      "text": "Die Herren vom Versand sind nicht zu Topen. Sie gehen mit uns Kraftfahrern noch menschlich und Freundlich um.Probleme werden zusammen gelöst. Was in der heutigen Zeit Seltenheitswert hat.",
+      "date": "vor 7 Monaten"
+    },
+    {
+      "author": "ILLIGDRUCK & MEDIENWERKSTATT",
+      "rating": 1,
+      "text": "Völlig unmotivierte und überhebliche Mitarbeiter, der teuerste Lieferant, den wir jemals hatten! Utopische und unverschämte Kosten für Anreise und Reisezeit. Wir werden alles dafür tun, um Technotrans nicht mehr beauftragen zu müssen. Wir raten jedem von einer Zusammenarbeit ab.",
+      "date": "vor 3 Jahren"
+    },
+    {
+      "author": "Holger S",
+      "rating": 5,
+      "text": "Professionelle Firma, Guter Kontakt. Zusammenarbeit klappt super.",
+      "date": "vor 5 Jahren"
+    },
+    {
+      "author": "Andreas Schütze",
+      "rating": 5,
+      "text": "Kommt natürlich auf die Abteilung an  .\nKenne nur 2 .",
+      "date": "vor 2 Jahren"
+    },
+    {
+      "author": "Uwe Schildkamp",
+      "rating": 5,
+      "text": "Sehr guter Service",
+      "date": "vor 7 Jahren"
+    }
+  ],
+  "_debug": "gmb-import"
+}
